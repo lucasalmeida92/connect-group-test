@@ -17,3 +17,18 @@ export const getData = (cb) => {
 
 	vehicles.send();
 };
+
+export const getVehicleData = (vehicleId, cb) => {
+  const vehicle = new XMLHttpRequest();
+  vehicle.open('GET', 'http://localhost:9988/api/vehicle/'+vehicleId);
+
+  vehicle.onreadystatechange = function() {
+      if(vehicle.readyState === 4) {
+       if(vehicle.status === 200) {
+         cb(vehicle.responseText);
+      }
+  }
+};
+
+vehicle.send();
+};
