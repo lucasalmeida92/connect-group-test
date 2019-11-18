@@ -10,8 +10,10 @@ export default class VehicleList extends Component {
 		this.state = {
       vehicles: null,
       isLoading: false,
+      hasVehicleOpen: false,
     }
     this.renderVehicleList = this.renderVehicleList.bind(this);
+    this.handleVehicleClick = this.handleVehicleClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -24,25 +26,30 @@ export default class VehicleList extends Component {
 			})
 		});
   }
+
+  handleVehicleClick(isOpen) {
+    this.setState({ hasVehicleOpen: isOpen });
+  }
   
   renderVehicleList() {
     if (this.state.isLoading || !this.state.vehicles)
       return (<p>Loading...</p>);
 
     return this.state.vehicles.map(vehicle => (
-      <Vehicle key={vehicle.id} {...vehicle}/>
+      <Vehicle key={vehicle.id} onVehicleClick={this.handleVehicleClick} {...vehicle}/>
     ));
   }
 
 	render() {
-      console.log(this.state.vehicles);
-      return (
-        <div className="PageWrapper">
-          <h1 className="PageTitle">Vehicles List</h1>
-          <div className="VehicleList">
-            {this.renderVehicleList()}
-          </div>
+    const listClassNames = this.state.hasVehicleOpen ? 'VehicleList VehicleList--open' : 'VehicleList';
+
+    return (
+      <div className="PageWrapper">
+        <h1 className="PageTitle">Vehicles List</h1>
+        <div className={listClassNames}>
+          {this.renderVehicleList()}
         </div>
-      )
+      </div>
+    )
 	}
 }
