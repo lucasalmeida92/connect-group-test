@@ -224,12 +224,23 @@ body {
     .Vehicle__close-button {
       z-index: 101;
       position: absolute;
-      top: 2px;
-      right: 16px;
-      font-size: 2.5rem;
+      top: -12px;
+      right: -6px;
+      font-size: 1.8rem;
       font-weight: 100;
-      color: #444;
+      color: #fff;
       cursor: pointer;
+      background: rgba(0,0,0, 0.8);
+      border-radius: 50px;
+      width: 34px;
+      height: 34px;
+      line-height: 31px;
+      text-align: center;
+      transition: 150ms all ease-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }

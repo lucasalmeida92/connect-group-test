@@ -43,8 +43,8 @@ export default class Vehicle extends Component {
     return (
       <div className={wrapperClassNames}>
         {isOpen && <span className="Vehicle__close-button" onClick={this.handleCloseClick}>x</span>}
-        <figure className="Vehicle__image" style={{backgroundImage: `url(https://stimg.cardekho.com/images/carexteriorimages/630x420/Land-Rover/Land-Rover-Range-Rover/5880/front-left-side-47.jpg?tr=w-420,e-sharpen)`}}></figure>
-        {/* <figure className="Vehicle__image" style={{backgroundImage: `url(${media.url})`}}></figure> */}
+        {/* <figure className="Vehicle__image" style={{backgroundImage: `url(https://stimg.cardekho.com/images/carexteriorimages/630x420/Land-Rover/Land-Rover-Range-Rover/5880/front-left-side-47.jpg?tr=w-420,e-sharpen)`}}></figure> */}
+        <figure className="Vehicle__image" style={{backgroundImage: `url(${media[0].url})`}}></figure>
         <div className="Vehicle__info" onClick={this.handleClick}>
           <h2 className="Vehicle__name">{id}</h2>
           <p className="Vehicle__price">{vehicle ? `From ${vehicle.price}` : '...'}</p>

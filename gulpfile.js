@@ -29,6 +29,11 @@ gulp.task('sass:watch', function () {
     gulp.watch('./src/**/*.scss', ['sass']);
 });
 
+gulp.task('move-images', function() {
+  return gulp.src('./images/**/*')
+      .pipe(gulp.dest('dist/images'))
+});
+
 gulp.task('test', () => {
     return gulp.src('./test/*.spec.js', {read: false})
         .pipe(mocha({
@@ -46,5 +51,5 @@ gulp.task('server:watch', function () {
 });
 
 gulp.task('default', function () {
-  gulp.start('sass', 'sass:watch', 'js', 'js:watch', 'server', 'server:watch');
+  gulp.start('sass', 'sass:watch', 'js', 'js:watch', 'move-images','server', 'server:watch');
 });
